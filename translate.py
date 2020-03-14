@@ -105,7 +105,8 @@ def write_file(data):
         input: list
         returns: None
     """
-    fn_o = fn_i.replace('.', '.OUT.')
+    pos = fn_i.rfind('.')
+    fn_o = fn_i[:pos] + '.OUT' + fn_i[pos:]
     f = open(fn_o, "w")
     for datum in data:
         str_n, str_d = datum
