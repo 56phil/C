@@ -1,0 +1,126 @@
+>Query_10001 Drosophila_melanogaster NP_524672.1 tribbles [Drosophila melanogaster]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------IFLTPWLREQRPF-HMYLP
+V----------------------------------DVEVAEDWSD-AEED-EGTAADAMD
+DDEEGLCPLGDKHEYEDI-GVEPLDYTRSTLQMAQNANGLSTEPEPDTDVDMG-------
+-----------------------------------------------
+>Query_10002 Lucilia_cuprina XP_023305582.1 tribbles homolog 1 [Lucilia cuprina]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------IFLSPWLKEQKPF-HMYIP
+V----------------------------------DVAIPDDEDDCLSDN---DSMDCMD
+IVE-------------DD-GVQPLDYSCSTLSL--NYVNDSY-------AEMG-------
+-----------------------------------------------
+>Query_10003 Rhagoletis_zephyria XP_017468592.1 PREDICTED: CBLinteracting protein kinase 9 [Rhagoletis zephyria]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------VFLTPWLQEQKPYGNLYLH
+V----------------------------------DTNL--DDLE-MEDD-DDS--VALT
+--------QSPTAEKEEEAALQQMHFEKDC-QGNNANADVPTNHHYIQ--DCQV------
+---ADDCDISANAAEPLNYSRHSLQT-----VNHAMHLGGDVDVEMG
+>Query_10004 Stomoxys_calcitrans XP_013119293.1 PREDICTED: tribbles homolog 2 [Stomoxys calcitrans]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------IFLSPWLKEQRGF-HMYIP
+I----------------------------------DVEIPDDDN--GETT-RKTMENCMD
+TTD-------------DLDGVEPLDYSCTTLSV--N-YGYSY-------AEMG-------
+-----------------------------------------------
+>Query_10005 Musca_domestica XP_005191874.1 PREDICTED: SNF1related protein kinase catalytic subunit alpha KIN10 [Musca domestica]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------IFLSPWLKEQRPF-HMYIP
+V----------------------------------DVEIPADEP--LNTS---SSMDCAE
+LDE-------------DV-GVQPLDYSCSSLSL--N-CTYSY-------AEMG-------
+-----------------------------------------------
+>Query_10006 Bactrocera_latifrons XP_018799933.1 PREDICTED: CBLinteracting protein kinase 17 [Bactrocera latifrons]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------VFLTPWLKQQRPHDYVYLS
+V----------------------------------DTNL--DDLE-MESD-DDT--DVLE
+--------QTPSRVEGGA---QQMHYTKDC-QVDNNSQNIAAAHHFVTEEDCQEDEDA--
+--DADDCDISNT--EPLNYSHTHTTATGNSSQQHAIVVDDDVEMS--
+>Query_10007 Zeugodacus_cucurbitae XP_011195147.1 PREDICTED: tribbles homolog 3 [Zeugodacus cucurbitae]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------IFLTPWLKEQKPHDYVYLS
+V----------------------------------DTNL--DDFE-MESD-DDD----AD
+--------DAV-AME-QE---QQMHFTKDC-QADNR--RIATAHHFVA-EDCQ-------
+--DADDCDISS-----------NTQA-LNS--QHASDVDSDVEMR--
+>Query_10008 Bactrocera_dorsalis XP_011205670.1 PREDICTED: CBLinteracting protein kinase 17 [Bactrocera dorsalis]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------VFLTPWLKQQRPHDYVYLS
+V----------------------------------DTNL--DDLE-MESDGDDT--DVLE
+--------QT-SRVEGGA---QQMHYTKDC-QVDNNSNNIATAHHFVTEEDCEEDEDADE
+DEDSDDCDISNT--EPLNYSRTHTTAAGN-SQQHAIVVDDDVEMS--
+>Query_10009 Bactrocera_oleae XP_014090855.1 PREDICTED: tribbles homolog 3 [Bactrocera oleae]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------VFITPWLKQQKPHDYVYLS
+A----------------------------------DTNL--DDLE-MESD-DDT--DVME
+--------QTP-RVE-GE---QQMHFTKDC-QVDNS--HIASANHFVT-EDCQE------
+--DADDCDISNT--EPINYSRPHTTA-GNS--QRAIDVDNDVEMS--
+>Query_10010 Ceratitis_capitata XP_004522405.1 CBLinteracting protein kinase 31 [Ceratitis capitata]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------VFITPWVRDQAKPYYAQVP
+EDISFFADDA--------------------EMEYDDSELVNANVLEAQSSTTTTTNEMET
+QQP--------------------MHYLKDCPEGNSNTDNVVPAIPQLHQQDYLTA-----
+-----DCDTSNT--QPIDYS-LRAAANGSSSSPITIDLDSDEEMS--
+>Query_10024 Aedes_aegypti XP_001658589.2 tribbles homolog 2 [Aedes aegypti]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------VLYHPWLQH-DD----TR-
+-----------------------------------DQLTYVSSSNSSSSRSGSSGSSHQA
+DDQCVPEWVDPISSEDDA-VYRAG-GRFGTDASRFEDAEVV-------------------
+-----------------------------------------------
+>Query_10031 Aedes_albopictus XP_019932887.1 PREDICTED: tribbles homolog 2like [Aedes albopictus]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------VLYHPWLQH-DD----TR-
+-----------------------------------DHLSYMSGS-SSSSRSGSSG---QQ
+DDQCVPEWVDPIGSEDDAGAYRIGRGRFGSDSNRFEDGEVV-------------------
+-----------------------------------------------
+>Query_10045 Nilaparvata_lugens XP_022185443.1 tribbles homolog 2 [Nilaparvata lugens]
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------------------VLLHPWL
+TRD--ERCVNAAAHHNDQIVPEWTAAEEDAY-----------------------------
+-----------------------------------------------
+>Query_10097 Penaeus_vannamei ROT66628.1 Tribbleslike protein, partial [Penaeus vannamei]
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------------------VLSHPWL
+TRP--PRD-HPLRDPTDHTVPTMFLQSPSHRSQSPKASSAAASHA--------PSLFGL-
+-----------------------------------------------
+>Query_10099 Daphnia_pulex EFX78756.1 hypothetical protein DAPPUDRAFT_25012, partial [Daphnia pulex]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------ILLHPWFSAVLRTAKVD--
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------------
+>Query_10101 Daphnia_magna KZS07153.1 putative Tribbles protein [Daphnia magna]
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------ILRHPWFTATLRAAKVDQV
+KSKPEVTGNGAIRPELSVVDQVVPEALVDSRMEE--------------------------
+------------------------------------------------------------
+-----------------------------------------------
+>Query_10102 Euroglyphus_maynei OTF80788.1 hypothetical protein BLA29_005811, partial [Euroglyphus maynei]
+TLAHRWFDCFRSSNPINNSIMMKRNSLSSIATVPPSSSASASGVFPSYFQQHNHHNNILN
+NINYRQQNRQNYQNNLSQQSPPQSPMSMIMNSSSNNSSNNQQSSMTNQSSSTSMTLLSPS
+TSTISSIRALQQQTAVVATGAALNNNNN--------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+-----------------------------------------------
+>Query_10103 XP_015789539.1 tribbles homolog 2 [Tetranychus urticae]
+------------------------------------------------------------
+------------------------------------------------------------
+------------IPEYVSPWAQTLINAFICVKPELRITPEEALKHEWIRMHCDPNYVAPP
+TSEGEESNGD-AFPVLLP-----------------DHLAPRLARANIDSPQSFILP----
+------------------------------------------------------------
+-----------------------------------------------
