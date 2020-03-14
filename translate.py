@@ -30,20 +30,16 @@ delimiters = "[", "]"   # surrounds Full species name (fsn)
 template = [] #from first ds
 
 
-def get_name_and_sequence(str_i):
+def get_fsn_and_sequence(str_i):
     """ Extracts elements from a data set
         input: string
-        returns: list (empty on any error)
+        returns: list
     """
-    try:
-        start, end = [i for i, c in enumerate(str_i) if c in delimiters]
-        return ['>' + str_i[start+1:end], str_i[end+1:]]
-    except:
-        pass
-    return []
+    start, end = [i for i, c in enumerate(str_i) if c in delimiters]
+    return ['>' + str_i[start+1:end], str_i[end+1:]]
 
 
-def format_sequence(str_i):
+def format_sequence(sequence):
     """ Places a '+' everywhere there is a False in the template list
         input: string
         returns: string
@@ -51,22 +47,22 @@ def format_sequence(str_i):
     lst_u = []
     for i, b in enumerate(template):
         if b:
-            lst_u.append(str_i[i])
+            lst_u.append(sequence[i])
         else:
             lst_u.append('+')
     return ''.join(lst_u)
 
 
-def scan_first_ds(str_i):
+def scan_first_dataset(sequence):
     """ Builds the template list where each letter in the input is represented
         with a True. All other values result in a False.
         input: string
-        returns: list
+        returns: None
     """
     global template
-    template = [False for _ in range(len(str_i))]
-    for i in range(len(str_i)):
-        if str_i[i].isalpha():
+    template = [False for _ in range(len(sequence))]
+    for i in range(len(sequence)):
+        if sequence[i].isalpha():
             template[i] = True
     return
 
@@ -78,26 +74,18 @@ def read_file():
     """
     with open(fn_i) as f:
         ds = f.readlines()
-    return ''.join(ds).split('>')
+    raw_list = ''.join(ds).split('>')
+    return raw_list[1:]
 
 
-def parse_raw_data(raw_data):
+def parse_raw_data(raw_list):
     """ Builds a list where each data set is a two element list.
         The first element contains the full species name.
         The second element is the protien sequence.
         input: list
         returns: list
     """
-    data = []
-    for raw_dataset in raw_data:
-        result = get_name_and_sequence(raw_dataset)
-        try:
-            t0, t1 = result
-            if t0 and t1:
-                data.append(result)
-        except:
-            pass
-    return data
+    return [get_fsn_and_sequence(raw_dataset) for raw_dataset in raw_list]
 
 
 def format_parsed_data(data):
@@ -108,8 +96,7 @@ def format_parsed_data(data):
         input: list
         returns: list
     """
-    # print(data)
-    scan_first_ds(data[0][1])
+    scan_first_dataset(data[0][1])
     for i in range(len(data)):
         data[i][1] = format_sequence(data[i][1])
     data[0][1] = data[0][1].replace('+', '-')
