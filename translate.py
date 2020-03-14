@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 
-fn_i = '/home/p/Documents/Chris/2019-03-18 All but VP sequences.txt'
-fn_o = '/home/p/Documents/Chris/2019-03-18 All but VP sequences.OUT.txt'
+fn_i = '/home/p/Chris/2019-03-18 All but VP sequences.txt'
+fn_o = '/home/p/Chris/2019-03-18 All but VP sequences.OUT.txt'
 delimiters = "[", "]"
 template = []
-
-
-def read_file():
-    with open(fn_i) as f:
-        ds = f.readlines()
-    return ''.join(ds).split('>')
 
 
 def get_name_and_sequence(str_i):
@@ -21,7 +15,7 @@ def get_name_and_sequence(str_i):
     return []
 
 
-def filter_datum(n, str_i):
+def format_sequence(n, str_i):
     lst_u = []
     for i, b in enumerate(template):
         if b:
@@ -40,12 +34,10 @@ def scan_first_ds(str_i):
     return
 
 
-def format_parsed_data(data):
-    scan_first_ds(data[0][1])
-    for i in range(len(data)):
-        data[i][1] = filter_datum(i, data[i][1])
-    data[0][1] = data[0][1].replace('+', '-')
-    return data
+def read_file():
+    with open(fn_i) as f:
+        ds = f.readlines()
+    return ''.join(ds).split('>')
 
 
 def parse_raw_data(raw_data):
@@ -58,6 +50,14 @@ def parse_raw_data(raw_data):
                 data.append(lst)
         except:
             pass
+    return data
+
+
+def format_parsed_data(data):
+    scan_first_ds(data[0][1])
+    for i in range(len(data)):
+        data[i][1] = format_sequence(i, data[i][1])
+    data[0][1] = data[0][1].replace('+', '-')
     return data
 
 
