@@ -3,7 +3,7 @@
 '''
 translate.py
 
-This is a python program that can read a text file and write a text file with a different name. It reads the very first data set (drosophila melanogster) determine where the protein sequence is in the count. Then in every subsequent data set the program will only return data that is related to that count. This will remove data that does that does not precisely align with Drosophila sequence positions  (wether they are dash or letter). When rewriting each data set it should start with > then Species name an enter and then the protein sequence string.
+This is a python program that can read a text file (fn_i) and write a text file with named fs_o. It reads the very first data set, determines where the protein sequence is in the count. Then in every subsequent data set the program will only return data that is related to that count. This will remove data that does that does not precisely align with Drosophila sequence positions  (wether they are dash or letter). When rewriting each data set it should start with > then Species name an enter and then the protein sequence string.
 
 File discription:
 
@@ -22,9 +22,6 @@ File discription:
 
 # input file name
 fn_i = '/home/p/Chris/2019-03-18 All but VP sequences.txt'
-
-# output file name
-fn_o = '/home/p/Chris/2019-03-18 All but VP sequences.OUT.txt'
 
 delimiters = "[", "]"   # surrounds Full species name (fsn)
 template = [] #from first ds
@@ -108,6 +105,7 @@ def write_file(data):
         input: list
         returns: None
     """
+    fn_o = fn_i.replace('.', '.OUT.')
     f = open(fn_o, "w")
     for datum in data:
         str_n, str_d = datum
