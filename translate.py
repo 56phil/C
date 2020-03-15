@@ -74,7 +74,6 @@ def format_parsed_data(data):
     template = [True if c.isalpha() else False for c in sequence]
     for i, datum in enumerate(data):
         data[i][1] = format_sequence(template, datum[1])
-    data[0][1] = data[0][1].replace('+', '-')
     data[0][1] = sequence
     return data
 
