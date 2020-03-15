@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import sys
 
 '''
 translate.py
@@ -18,53 +19,26 @@ File discription:
     5.  The letters represent the proteins sequence
 '''
 
-# globals
-
-# input file name
-fn_i = '/home/p/Chris/2019-03-18 All but VP sequences.txt'
-
-delimiters = "[", "]"   # surrounds Full species name (fsn)
-template = [] #from first ds
-
 
 def get_fsn_and_sequence(str_i):
     """ Extracts elements from a data set
         input: string
         returns: list
     """
+    delimiters = '[', ']'
     start, end = [i for i, c in enumerate(str_i) if c in delimiters]
     return ['>' + str_i[start+1:end], str_i[end+1:]]
 
 
-def format_sequence(sequence):
+def format_sequence(template, sequence):
     """ Places a '+' everywhere there is a False in the template list
         input: string
         returns: string
     """
-    lst_u = []
-    for i, b in enumerate(template):
-        if b:
-            lst_u.append(sequence[i])
-        else:
-            lst_u.append('+')
-    return ''.join(lst_u)
+    return ''.join([c if b else '+' for b, c in zip(template, sequence)])
 
 
-def scan_first_dataset(sequence):
-    """ Builds the template list where each letter in the input is represented
-        with a True. All other values result in a False.
-        input: string
-        returns: None
-    """
-    global template
-    template = [False for _ in range(len(sequence))]
-    for i in range(len(sequence)):
-        if sequence[i].isalpha():
-            template[i] = True
-    return
-
-
-def read_file():
+def read_file(fn_i):
     """ Builds the raw data list by reading the text file named by fn_i
         input: None
         returns: list
@@ -93,16 +67,16 @@ def format_parsed_data(data):
         input: list
         returns: list
     """
-    scan_first_dataset(data[0][1])
+    template = [True if c.isalpha() else False for c in data[0][1]]
     for i in range(len(data)):
-        data[i][1] = format_sequence(data[i][1])
+        data[i][1] = format_sequence(template, data[i][1])
     data[0][1] = data[0][1].replace('+', '-')
     return data
 
 
-def write_file(data):
-    """ Writes the results to a text file named by fn_o
-        input: list
+def write_file(fn_i, data):
+    """ Writes the results to a text file using a name based on fn_i
+        input: string, list
         returns: None
     """
     pos = fn_i.rfind('.')
@@ -116,4 +90,5 @@ def write_file(data):
 
 
 if __name__ == '__main__':
-    write_file(format_parsed_data(parse_raw_data(read_file())))
+    fn_i = sys.argv[1]
+    write_file(fn_i, format_parsed_data(parse_raw_data(read_file(fn_i))))
