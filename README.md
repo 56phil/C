@@ -16,4 +16,4 @@ Examples:
     $./translate.py some_file.txt 80
     $./translate.py some_file.txt
 
-    The line length parameter is optional and defaults to 60.
+The line length parameter is optional and defaults to 60. If no line ends within a sequence is needed, enter 0.
