@@ -20,6 +20,15 @@ Input file format:
 
 Output file format:
     '>' + full species name + '\n' + protiens sequence + '\n\n'
+
+Usage:
+    $./translate.py <FILE NAME> [LENGTH OF SEQUENCE LINES]
+
+Examples:
+    $./translate.py some_file.txt 80
+    $./translate.py some_file.txt
+
+    The line length parameter is optional and defaults to 60.
 '''
 
 
@@ -48,8 +57,11 @@ def read_file(fn_i):
     """
     with open(fn_i) as f:
         ds = f.readlines()
-    raw_list = ''.join(ds).split('>')
-    return raw_list[1:]
+    raw_list = ''.join(ds).split('>')[1:]
+    lc = len(raw_list)
+    if lc < 2:
+        print('Input data exception: Not enough data sets')
+    return raw_list
 
 
 def parse_raw_data(raw_list):
@@ -78,7 +90,7 @@ def format_parsed_data(data):
     return data
 
 
-def write_file(fn_i, data):
+def write_file(fn_i, data, stp):
     """ Writes the results to a text file using a name based on fn_i
         input: string, list
         returns: None
@@ -86,15 +98,15 @@ def write_file(fn_i, data):
     pos = fn_i.rfind('.')
     fn_o = fn_i[:pos] + '.OUT' + fn_i[pos:]
     f = open(fn_o, "w")
-    stp = 60
     for fsn, sequence in data:
         f.write(fsn + '\n')
         for p in range(0, len(sequence), stp):
             f.write(sequence[p:p+stp] + '\n')
-        # f.write('\n')
     f.close()
 
 
 if __name__ == '__main__':
     fn_i = sys.argv[1]
-    write_file(fn_i, format_parsed_data(parse_raw_data(read_file(fn_i))))
+    stp = sys.argv[2] if len(sys.argv) == 3 else '60'
+    stp = int(stp) if stp.isnumeric() else 60
+    write_file(fn_i, format_parsed_data(parse_raw_data(read_file(fn_i))), stp)
