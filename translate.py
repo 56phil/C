@@ -4,19 +4,22 @@ import sys
 '''
 translate.py
 
-This is a python program that can read a text file (fn_i) and write a text file with named fs_o. It reads the very first data set, determines where the protein sequence is in the count. Then in every subsequent data set the program will only return data that is related to that count. This will remove data that does that does not precisely align with Drosophila sequence positions  (wether they are dash or letter). When rewriting each data set it should start with > then Species name an enter and then the protein sequence string.
+This is a python program that can read a text file (fn_i) and write a text file
+with named fs_o. It reads the very first data set, determines where the protein
+sequence is in the count. Then in every subsequent data set the program will
+only return data that is related to that count. This will remove data that does
+that does not precisely align with Drosophila sequence positions  (wether they
+are dash or letter). The output file will have the same number of data sets. The
+sequence of the first data set is unchanged. In the remaining data sets, each
+character of the sequence is unchanged if the corresponding character of the
+first sequence is a letter. Otherwise it is replaced with a '+'.
 
-File discription:
+Input file format:
+    '>' + other species information + '[' + full species name + ']' +
+    protiens sequence
 
-    1.  Each data set starts with '>'
-
-    2.  The first line describes the species name and designation
-
-    3.  The full species name can be found between '[ ]'
-
-    4.  '-' represent an opening for alignment
-
-    5.  The letters represent the proteins sequence
+Output file format:
+    '>' + full species name + '\n' + protiens sequence + '\n\n'
 '''
 
 
@@ -27,7 +30,7 @@ def get_fsn_and_sequence(str_i):
     """
     delimiters = '[', ']'
     start, end = [i for i, c in enumerate(str_i) if c in delimiters]
-    return ['>' + str_i[start+1:end], str_i[end+1:]]
+    return ['>' + str_i[start+1:end], str_i[end+1:].replace('\n', '')]
 
 
 def format_sequence(template, sequence):
@@ -67,10 +70,12 @@ def format_parsed_data(data):
         input: list
         returns: list
     """
-    template = [True if c.isalpha() else False for c in data[0][1]]
-    for i in range(len(data)):
-        data[i][1] = format_sequence(template, data[i][1])
+    sequence = data[0][1]
+    template = [True if c.isalpha() else False for c in sequence]
+    for i, datum in enumerate(data):
+        data[i][1] = format_sequence(template, datum[1])
     data[0][1] = data[0][1].replace('+', '-')
+    data[0][1] = sequence
     return data
 
 
