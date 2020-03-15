@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import sys
+import argparse
 
 '''
 translate.py
@@ -90,7 +91,7 @@ def format_parsed_data(data):
     return data
 
 
-def write_file(fn_i, data, stp):
+def write_file(fn_i, data, step_size):
     """ Writes the results to a text file using a name based on fn_i
         input: string, list
         returns: None
@@ -100,14 +101,24 @@ def write_file(fn_i, data, stp):
     f = open(fn_o, "w")
     for fsn, sequence in data:
         f.write(fsn + '\n')
-        stp = len(sequence) if stp < 1 else stp
-        for p in range(0, len(sequence), stp):
-            f.write(sequence[p:p+stp] + '\n')
+        for p in range(0, len(sequence), step_size):
+            f.write(sequence[p:p+step_size] + '\n')
     f.close()
 
 
+def print_usage():
+    print('')
+
+
 if __name__ == '__main__':
-    fn_i = sys.argv[1]
-    stp = sys.argv[2] if len(sys.argv) == 3 else '60'
-    stp = int(stp) if stp.isnumeric() else 60
-    write_file(fn_i, format_parsed_data(parse_raw_data(read_file(fn_i))), stp)
+    # Instantiate the parser
+    parser = argparse.ArgumentParser(description='translate.py')
+    parser.add_argument('file_name', type=str,
+                        help='Fully qulified name of input file.')
+    parser.add_argument('step_size', default=60, type=int, nargs='?',
+                        help='Number of characters in a sequence line.')
+    args = parser.parse_args()
+
+    write_file(args.file_name,
+        format_parsed_data(parse_raw_data(read_file(args.file_name))),
+        args.step_size)
