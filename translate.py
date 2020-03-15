@@ -100,6 +100,7 @@ def write_file(fn_i, data, stp):
     f = open(fn_o, "w")
     for fsn, sequence in data:
         f.write(fsn + '\n')
+        stp = len(sequence) if stp < 1 else stp
         for p in range(0, len(sequence), stp):
             f.write(sequence[p:p+stp] + '\n')
     f.close()
