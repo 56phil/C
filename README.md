@@ -7,13 +7,18 @@ Input file format:
     protiens sequence
 
 Output file format:
-    '>' + full species name + '\n' + protiens sequence + '\n\n'
+    '>' + full species name + '\n' + protiens sequence + '\n'
 
 Usage:
+
     $./translate.py <FILE NAME> [LENGTH OF SEQUENCE LINES]
 
 Examples:
+
     $./translate.py some_file.txt 80
+    
     $./translate.py some_file.txt
+
+    $./translate.py some_file.txt 0
 
 The line length parameter is optional and defaults to 60. If no line ends within a sequence is needed, enter 0.
