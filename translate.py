@@ -82,10 +82,9 @@ def write_file(fn_i, data):
     pos = fn_i.rfind('.')
     fn_o = fn_i[:pos] + '.OUT' + fn_i[pos:]
     f = open(fn_o, "w")
-    for datum in data:
-        str_n, str_d = datum
-        f.write(str_n + '\n')
-        f.write(str_d + '\n\n')
+    for fsn, sequence in data:
+        f.write(fsn + '\n')
+        f.write(sequence + '\n\n')
     f.close()
 
 
