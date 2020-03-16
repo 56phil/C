@@ -25,7 +25,7 @@ Output file format:
     '>' + full species name + '\n' + protiens sequence + '\n'
 
 Usage:
-    $./translate.py <FILE NAME> [LENGTH OF SEQUENCE LINES]
+    $./translate.py <FILE NAME> [MAXIMUM LENGTH OF SEQUENCE LINES]
     [REPLACEMENT CHARACTER]
 
 Examples:
@@ -51,7 +51,7 @@ def get_fsn_and_sequence(str_i):
 def format_sequence(template, sequence, repl_char):
     """ Places the replacement character everywhere there is a False in the
         template list
-        input: string
+        input: list list string
         returns: string
     """
     return ''.join([c if b else repl_char for b, c in zip(template, sequence)])
@@ -59,7 +59,7 @@ def format_sequence(template, sequence, repl_char):
 
 def read_file(file_name):
     """ Builds the raw data list by reading the text file named by file_name
-        input: None
+        input: string
         returns: list
     """
     with open(file_name) as f:
@@ -97,7 +97,7 @@ def format_parsed_data(data, repl_char):
     return data
 
 
-def write_file(file_name, data, line_size):
+def write_file(file_name, data, line_length):
     """ Writes the results to a text file using a name based on file_name
         input: string, list
         returns: None
@@ -107,8 +107,8 @@ def write_file(file_name, data, line_size):
     f = open(fn_o, "w")
     for fsn, sequence in data:
         f.write(fsn + '\n')
-        for p in range(0, len(sequence), line_size):
-            f.write(sequence[p:p+line_size] + '\n')
+        for p in range(0, len(sequence), line_length):
+            f.write(sequence[p:p+line_length] + '\n')
     f.close()
 
 
@@ -116,7 +116,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='translate.py')
     parser.add_argument('file_name', type=str,
                         help='Name of input file.')
-    parser.add_argument('line_size', type=int, nargs='?', default=60,
+    parser.add_argument('line_length', type=int, nargs='?', default=60,
                         help='Number of characters in a sequence line.')
     parser.add_argument('replacement_character', type=str,
                         nargs='?', default='+',
@@ -127,4 +127,4 @@ if __name__ == '__main__':
 
     write_file(args.file_name,
         format_parsed_data(parse_raw_data(read_file(args.file_name)),
-        repl_char), args.line_size)
+        repl_char), args.line_length)
