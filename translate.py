@@ -101,28 +101,34 @@ def format_parsed_data(data, repl_char):
 def write_file(file_name, data, line_length):
     """ Writes the results to a text file using a name based on file_name
         input: string, list
-        returns: None
+        returns: int
     """
     pos = file_name.rfind('.')
     fn_o = file_name[:pos] + '.OUT' + file_name[pos:]
     f = open(fn_o, "w")
     for fsn, sequence in data:
         f.write(fsn + '\n')
-        for p in range(0, len(sequence), line_length):
+        l_length = max(line_length, len(sequence))
+        for p in range(0, len(sequence), l_length):
             f.write(sequence[p:p+line_length] + '\n')
     f.close()
+    return len(data)
 
 
 def check_fname(fname):
+    ''' Validates file name supplied by user
+        input: string
+        returns: string
+    '''
     cnt = 0
     while not os.path.isfile(fname):
         if cnt > 3:
-            cnt = 1
+            cnt = 0
             r = input("Want to terminate? y/n: ").lower()
             if r == '' or not r[0] == 'n':
                 fname = ''
                 break
-        if cnt > 0 or not fname == '':
+        elif cnt > 0 or not fname == '':
             print('Can\'t locate "{}"'.format(fname))
         fname = input("Please enter the input file name: ")
         cnt += 1
@@ -135,16 +141,16 @@ if __name__ == '__main__':
                         help='Name of input file.')
     parser.add_argument('line_length', type=int, nargs='?', default=60,
                         help='Number of characters in a sequence line.')
-    parser.add_argument('replacement_character', type=str,
-                        nargs='?', default='+',
-                        help='Character used to mark openings.')
+    parser.add_argument('replacement_character', type=str, nargs='?',
+                        default='+', help='Character used to mark openings.')
     args = parser.parse_args()
 
     repl_char = args.replacement_character[0]
 
     fname = check_fname(args.file_name)
 
-    if fname:
-        write_file(args.file_name,
-            format_parsed_data(parse_raw_data(read_file(fname)),
-            repl_char), args.line_length)
+    ds_count = 0 if not fname else write_file(args.file_name,
+        format_parsed_data(parse_raw_data(read_file(fname)),
+        repl_char), args.line_length)
+
+    print('{} data sets processed.'.format(ds_count))
