@@ -116,10 +116,16 @@ def write_file(file_name, data, line_length):
 def check_fname(fname):
     cnt = 0
     while not os.path.isfile(fname):
+        if cnt > 3:
+            cnt = 1
+            r = input("Want to terminate? y/n: ").lower()
+            if r == '' or not r[0] == 'n':
+                fname = ''
+                break
         if cnt > 0 or not fname == '':
             print('Can\'t locate "{}"'.format(fname))
         fname = input("Please enter the input file name: ")
-    cnt += 1
+        cnt += 1
     return fname
 
 
@@ -136,8 +142,9 @@ if __name__ == '__main__':
 
     repl_char = args.replacement_character[0]
 
-    fname = check_fname(args.file_name )
+    fname = check_fname(args.file_name)
 
-    write_file(args.file_name,
-        format_parsed_data(parse_raw_data(read_file(fname)),
-        repl_char), args.line_length)
+    if fname:
+        write_file(args.file_name,
+            format_parsed_data(parse_raw_data(read_file(fname)),
+            repl_char), args.line_length)
