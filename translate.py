@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import os.path
 
 '''
 translate.py
@@ -112,9 +113,19 @@ def write_file(file_name, data, line_length):
     f.close()
 
 
+def check_fname(fname):
+    cnt = 0
+    while not os.path.isfile(fname):
+        if cnt > 0 or not fname == '':
+            print('Can\'t locate "{}"'.format(fname))
+        fname = input("Please enter the input file name: ")
+    cnt += 1
+    return fname
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='translate.py')
-    parser.add_argument('file_name', type=str,
+    parser.add_argument('file_name', type=str, nargs='?', default='',
                         help='Name of input file.')
     parser.add_argument('line_length', type=int, nargs='?', default=60,
                         help='Number of characters in a sequence line.')
@@ -125,6 +136,8 @@ if __name__ == '__main__':
 
     repl_char = args.replacement_character[0]
 
+    fname = check_fname(args.file_name )
+
     write_file(args.file_name,
-        format_parsed_data(parse_raw_data(read_file(args.file_name)),
+        format_parsed_data(parse_raw_data(read_file(fname)),
         repl_char), args.line_length)
