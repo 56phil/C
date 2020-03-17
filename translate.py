@@ -108,9 +108,10 @@ def write_file(file_name, data, line_length):
     f = open(fn_o, "w")
     for fsn, sequence in data:
         f.write(fsn + '\n')
-        l_length = max(line_length, len(sequence))
-        for p in range(0, len(sequence), l_length):
-            f.write(sequence[p:p+line_length] + '\n')
+        l_length = len(sequence) if line_length == 0 else line_length
+        print(l_length)
+        for p in range(0, len(sequence) + 1, l_length):
+            f.write(sequence[p:p+l_length] + '\n')
     f.close()
     return len(data)
 
