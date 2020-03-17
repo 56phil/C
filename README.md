@@ -9,7 +9,7 @@ This is a python program that reads a text file and writes a text file with a na
     '>' + full species name + '\n' + protiens sequence + '\n'
 
 ## Usage:
-    $./translate.py <FILE NAME> [LENGTH OF SEQUENCE LINES] [REPLACEMENT CHARACTER]
+    $./translate.py <FILE NAME> [[LENGTH OF SEQUENCE LINES] REPLACEMENT CHARACTER]
 
 ## Examples:
 <ol>
