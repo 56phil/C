@@ -30,7 +30,7 @@ Usage:
     [REPLACEMENT CHARACTER]
 
 Examples:
-    $./translate.py some_file.txt 42 .
+    $./translate.py some_file.txt 42 _
     $./translate.py some_file.txt 123 \?
     $./translate.py some_file.txt
 
@@ -137,12 +137,12 @@ def check_fname(fname):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='translate.py')
-    parser.add_argument('file_name', type=str, nargs='?', default='',
-                        help='Name of input file.')
-    parser.add_argument('line_length', type=int, nargs='?', default=60,
-                        help='Number of characters in a sequence line.')
+    parser.add_argument('file_name', type=str, nargs='?',
+        default='', help='Name of input file.')
+    parser.add_argument('line_length', type=int, nargs='?',
+        default=60, help='Number of characters in a sequence line.')
     parser.add_argument('replacement_character', type=str, nargs='?',
-                        default='+', help='Character used to mark openings.')
+        default='+', help='Character used to mark openings.')
     args = parser.parse_args()
 
     repl_char = args.replacement_character[0]
@@ -150,7 +150,7 @@ if __name__ == '__main__':
     fname = check_fname(args.file_name)
 
     ds_count = 0 if not fname else write_file(args.file_name,
-        format_parsed_data(parse_raw_data(read_file(fname)),
-        repl_char), args.line_length)
+        format_parsed_data(parse_raw_data(read_file(fname)), repl_char),
+        args.line_length)
 
     print('{} data sets processed.'.format(ds_count))
