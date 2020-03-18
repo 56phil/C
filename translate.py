@@ -92,8 +92,10 @@ def format_parsed_data(data, repl_char):
     """
     sequence = data[0][1]
     template = [True if c.isalpha() else False for c in sequence]
-    for i, datum in enumerate(data):
-        data[i][1] = format_sequence(template, datum[1], repl_char)
+    i = 0
+    for _, sequence in data:
+        data[i][1] = format_sequence(template, sequence, repl_char)
+        i += 1
     data[0][1] = sequence
     return data
 
@@ -123,11 +125,11 @@ def check_fname(fname):
     cnt = 0
     while not os.path.isfile(fname):
         if cnt > 3:
-            cnt = 0
-            r = input("Want to terminate? y/n: ").lower()
+            r = input("Want to terminate? Y/n: ").lower()
             if r == '' or not r[0] == 'n':
                 fname = ''
                 break
+            cnt = 0
         elif cnt > 0 or not fname == '':
             print('Can\'t locate "{}"'.format(fname))
         fname = input("Please enter the input file name: ")
@@ -135,7 +137,11 @@ def check_fname(fname):
     return fname
 
 
-if __name__ == '__main__':
+def get_parameters():
+    ''' parses command line arguments
+        input: None
+        returns tuple
+    '''
     parser = argparse.ArgumentParser(description='translate.py')
     parser.add_argument('file_name', type=str, nargs='?',
         default='', help='Name of input file.')
@@ -149,8 +155,14 @@ if __name__ == '__main__':
 
     fname = check_fname(args.file_name)
 
-    ds_count = 0 if not fname else write_file(args.file_name,
-        format_parsed_data(parse_raw_data(read_file(fname)), repl_char),
-        args.line_length)
+    return fname, args.line_length, repl_char
+
+
+if __name__ == '__main__':
+    fname, line_length, repl_char = get_parameters()
+
+    ds_count = 0 if not fname else write_file(fname,
+        format_parsed_data(parse_raw_data(read_file(fname)),
+        repl_char), line_length)
 
     print('{} data sets processed.'.format(ds_count))

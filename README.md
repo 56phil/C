@@ -9,7 +9,7 @@ This is a python program that reads a text file and writes a text file with a na
     '>' + full species name + '\n' + protiens sequence + '\n'
 
 ## Usage:
-    $./translate.py <FILE NAME> [[LENGTH OF SEQUENCE LINES] REPLACEMENT CHARACTER]
+    $./translate.py [[[FILE NAME LENGTH OF SEQUENCE LINES] REPLACEMENT] CHARACTER]
 
 ## Examples:
 <ol>
@@ -20,12 +20,17 @@ This is a python program that reads a text file and writes a text file with a na
 </ul>
 <li>$./translate.py some_file.txt 123 \?</li>
 <ul>
-<li>The protiens sequence will be will be 123 characters long</li>
+<li>The protiens sequence lines will be will be 123 characters long</li>
 <li>The replacement character will be a question mark. (The backslash is needed to 'escape' some characters that have a special meaning in regular expresions.)</li>
 </ul>
 <li>$./translate.py some_file.txt</li>
 <ul>
-<li>The protiens sequence will be will be the default of 60 characters long</li>
+<li>The protiens sequence lines will be will be the default of 60 characters long</li>
+<li>The replacement character will be the default, a plus sign.</li>
+</ul>
+<li>$./translate.py</li>
+<ul>The user will be prompted for a file name.</li>
+<li>The protiens sequence lines will be will be the default of 60 characters long</li>
 <li>The replacement character will be the default, a plus sign.</li>
 </ul>
 </ol>
