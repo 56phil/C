@@ -29,7 +29,7 @@ This is a python program that reads a text file and writes a text file with a na
 <li>The replacement character will be the default, a plus sign.</li>
 </ul>
 <li>$./translate.py</li>
-<ul>The user will be prompted for a file name.</li>
+<li>The user will be prompted for a file name.</li>
 <li>The protiens sequence lines will be will be the default of 60 characters long</li>
 <li>The replacement character will be the default, a plus sign.</li>
 </ul>
