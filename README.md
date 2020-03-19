@@ -12,30 +12,10 @@ This is a python program that reads a text file and writes a text file with a na
     $./translate.py [[[FILE NAME LENGTH OF SEQUENCE LINES] REPLACEMENT] CHARACTER]
 
 ## Examples:
-<ol>
-    <li>python translate.py some_file.txt 42 0</li>
-    <ul>
-        <li>The protiens sequence will be will be 42 characters long.</li>
-        <li>The replacement character will be a zero.</li>
-    </ul>
-    <li>python translate.py some_file.txt 123 \?</li>
-    <ul>
-        <li>The protiens sequence lines will be will be 123 characters long</li>
-        <li>The replacement character will be a question mark. (The backslash is needed to 'escape' some characters that have a special meaning in regular expresions.)</li>
-    </ul>
-    <li>python translate.py some_file.txt</li>
-    <ul>
-        <li>The protiens sequence lines will be will be the default of 60 characters long</li>
-        <li>The replacement character will be the default, a plus sign.</li>
-    </ul>
-    <li>python translate.py</li>
-    <ul>
-        <li>The user will be prompted for a file name.</li>
-        <li>The protiens sequence lines will be will be the default of 60 characters long</li>
-        <li>The replacement character will be the default, a plus sign.</li>
-    </ul>
-</ol>
-
+1. python translate.py some_file.txt 42 0 -- line length = 42, replacement character = 0
+1. python translate.py some_file.txt 123 \? -- line length = 123, replacement character = ?
+1. python translate.py some_file.txt -- default line length (60), default replacement character (+)
+1. python translate.py --Prompts for file name, default line length (60), default replacement character (+)
 
 ---
 ### Notes:
