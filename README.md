@@ -13,7 +13,7 @@ This is a python program that reads a text file and writes a text file with a na
 
 ## Examples:
 <ol>
-<li>$./translate.py some_file.txt 42 _</li>
+<li>$./translate.py some_file.txt 42 0</li>
 <ul>
 <li>The protiens sequence will be will be 42 characters long.</li>
 <li>The replacement character will be an underscore.</li>
