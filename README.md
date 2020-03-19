@@ -13,7 +13,7 @@ This is a python program that reads a text file and writes a text file with a na
 
 ## Examples:
 1. python translate.py some_file.txt 42 0 -- line length = 42, replacement character = 0
-1. python translate.py some_file.txt 123 \? -- line length = 123, replacement character = ?
+1. python translate.py some_file.txt 123 # -- line length = 123, replacement character = #
 1. python translate.py some_file.txt -- default line length (60), default replacement character (+)
 1. python translate.py --Prompts for file name, default line length (60), default replacement character (+)
 
